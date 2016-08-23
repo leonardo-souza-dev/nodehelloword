@@ -1,12 +1,23 @@
-var http = require("http");
+var cool = require('cool-ascii-faces');
+var express = require('express');
+var app = express();
 
-var porta = process.env.PORT || 5000;
+app.set('port', (process.env.PORT || 5000));
 
-//create http server
-http.createServer(function(req,res){   //req = request , res = response
-    res.writeHead(200, {"Content-Type":"text/plain"}); // 200 = OK, Declear the type of file
-    res.write("Hello Word!");  //print out "Hello World"
-    res.end(); // end the app 
-}).listen(porta); // create any port number to view our app
+app.use(express.static(__dirname + '/public'));
 
-console.log("The server is running on port " + porta); 
+// views is directory for all template files
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs');
+
+app.get('/', function(request, response) {
+  response.render('pages/index')
+});
+
+app.get('/cool', function(request, response) {
+  response.send(cool());
+});
+
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
+});
