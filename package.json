@@ -1,3 +1,23 @@
 {
-  "name": "hello-word"
+  "name": "hello-word",
+  "version": "0.0.1",
+  "description": "Pure Node.js Hello Word",
+  "engines": {
+    "node": "4.5.0"
+  },
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ltreze/nodehelloword"
+  },
+  "keywords": [
+    "node",
+    "heroku"
+  ],
+  "license": "MIT"
 }
